@@ -1,11 +1,33 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Pokedex</title>
+    <script src="scripts/template.js"></script>
+    <script src="scripts/script.js" defer></script>
+    <link rel="stylesheet" href="styles/fonts.css">
+    <link rel="stylesheet" href="styles/assets.css">
+    <link rel="stylesheet" href="styles/standard.css">
+    <link rel="stylesheet" href="styles/style.css">
 </head>
-<body>
-    
+
+<body onload="renderTotalContent()">
+    <header>
+        <h1>Pokedex</h1>
+        <section id="searchRef" class="search">
+            <input type="text">
+            <button>Search</button>
+        </section>
+    </header>
+    <main>
+        <section class="total_Ref" id="contentRef">
+           
+        </section>
+        <button>Load</button>
+    </main>
+    <footer></footer>
 </body>
+
 </html>
