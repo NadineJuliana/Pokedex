@@ -17,15 +17,19 @@
     <header>
         <h1>Pokedex</h1>
         <section id="searchRef" class="search">
-            <input type="text">
-            <button>Search</button>
+            <input type="text" id="searchInput">
+            <button onclick="searchPokemon()">Search</button>
         </section>
     </header>
     <main>
         <section class="total_Ref" id="contentRef">
-           
         </section>
         <button class="loading_button" id="loadingButton" onclick="renderLoadThumbnailRef()">Load</button>
+
+
+        <div class="overlay_Ref" id="overlayRef"></div>
+        
+
     </main>
     <footer></footer>
 </body>
