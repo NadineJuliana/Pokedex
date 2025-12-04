@@ -3,7 +3,6 @@ let pokedexData = [];
 let filteredPokemon = [];
 let offset = 0;
 let limit = 30;
-// let url = `https://pokeapi.co/api/v2/pokemon?offset=${offset}&limit=${limit}`;
 
 async function renderTotalContent() {
     await getData();
@@ -11,13 +10,19 @@ async function renderTotalContent() {
 }
 
 async function getData() {
+    showLoading();
+    try {
     for (let i = offset + 1; i <= offset + limit; i++) {
         const response = await fetch(`https://pokeapi.co/api/v2/pokemon/${i}/`);
         const pokemonData = await response.json();
         pokedexData.push(pokemonData);
-        // console.log(pokedexdata);
     }
     offset += limit;
+    } catch (error) {
+        console.error("Error loading Pokemon!", error);
+    } finally {
+        hideLoading();
+    } 
 }
 
 function renderThumbnailRef(){
@@ -39,16 +44,15 @@ function renderThumbnailRef(){
     console.log(pokedexData); 
 }
 
-async function renderLoadThumbnailRef(){
+async function loadMore(){
+    const maxPokemon = 386;
+    if (pokedexData.length >= maxPokemon) return;
     const button = document.getElementById('loadingButton');
     button.disabled = true;
     await getData();
     renderThumbnailRef();
-    setTimeout(() => {
-        button.disabled = false;
-    }, 2000);
+    button.disabled = false;
 }
-
 
 function openOverlay(i, isFiltered = false) {
     const pkm = isFiltered ? filteredPokemon[i] : pokedexData[i];
@@ -123,11 +127,9 @@ function searchPokemonData(searchValue){
     filteredPokemon = [];
     pokedexData.forEach(pkm => {
         if (checkName(pkm.name, searchValue)) {
-            filteredPokemon.push(pkm);
-            
+            filteredPokemon.push(pkm); 
         }
     });
-
     if (filteredPokemon.length === 0){
         renderThumbnailRef();
     } else {
@@ -160,4 +162,13 @@ function renderFilteredPokemon(){
             </div>
         `;
     });
+}
+
+
+function showLoading() {
+    document.getElementById('loadingSpinner').style.display = 'flex';
+}
+
+function hideLoading() {
+    document.getElementById('loadingSpinner').style.display = 'none';
 }
