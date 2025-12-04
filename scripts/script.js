@@ -24,8 +24,9 @@ function renderThumbnailRef(){
     for (let i = pokedexData.length - limit; i < pokedexData.length; i++) {
         const pkm = pokedexData[i];
         contentRef.innerHTML += /*html*/`
-        <div onclick="openOverlay(${i})" class="thumbnail" id="thumbnailRef${i}">
+        <div onclick="openOverlay(${i}, false)" class="thumbnail" id="thumbnailRef${i}">
             <div>#${pkm.id}</div>
+            <!-- <div>${pkm.cries.latest}</div> -->
             <h3>${pkm.name.charAt(0).toUpperCase()+pkm.name.slice(1)}</h3>
             <div>
                 <p>${pkm.types[0].type.name}</p>
@@ -49,15 +50,15 @@ async function renderLoadThumbnailRef(){
 }
 
 
-function openOverlay(i) {
-    const pkm = pokedexData[i];
+function openOverlay(i, isFiltered = false) {
+    const pkm = isFiltered ? filteredPokemon[i] : pokedexData[i];
     const overlayRef = document.getElementById('overlayRef');
     overlayRef.innerHTML = /*html*/`
         <div class="overlay_hidden" id="overlay">
             <div class="navigation_icons">
-                <button onclick="openOverlay(${i - 1})">Zurück</button>
+                <button onclick="openOverlay(${i - 1}, ${isFiltered})">Zurück</button>
                 <button>X</button>
-                <button onclick="openOverlay(${i + 1})">Vorwärts</button>
+                <button onclick="openOverlay(${i + 1}, ${isFiltered})">Vorwärts</button>
             </div>
             <div class="top_area_overlay">
                 <h2>${pkm.name.charAt(0).toUpperCase()+pkm.name.slice(1)}</h2>
@@ -123,6 +124,7 @@ function searchPokemonData(searchValue){
     pokedexData.forEach(pkm => {
         if (checkName(pkm.name, searchValue)) {
             filteredPokemon.push(pkm);
+            
         }
     });
 
@@ -147,7 +149,7 @@ function renderFilteredPokemon(){
     contentRef.innerHTML ="";
     filteredPokemon.forEach((pkm, i) => {
         contentRef.innerHTML += /*html*/`
-            <div onclick="openOverlay(${i})" class="thumbnail">
+            <div onclick="openOverlay(${i}, true)" class="thumbnail">
                 <div>#${pkm.id}</div>
                 <h3>${pkm.name.charAt(0).toUpperCase()+pkm.name.slice(1)}</h3>
                 <div>
