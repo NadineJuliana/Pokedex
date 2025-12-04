@@ -11,8 +11,8 @@
     z-index: 1000;
 }
 
-.overlay_hidden {
-    background-color: white;
+.overlay_Content {
+    background-color: rgba(255, 255, 255, 0.767);
     padding: 20px;
     border-radius: 10px;
     max-width: 600px;
@@ -21,6 +21,11 @@
     overflow-y: auto;
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
     position: relative;
+}
+
+.no_Scroll {
+    overflow: hidden;
+    height: 100vh;
 }
 
 .navigation_icons {
