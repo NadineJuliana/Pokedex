@@ -112,3 +112,50 @@ function openOverlay(i) {
 
 // function closeOverlay(){}
 
+function checkName(pokemonName, searchValue){
+    if(pokemonName.includes(searchValue.toLowerCase())){
+        return true;
+    }
+}
+
+function searchPokemonData(searchValue){
+    filteredPokemon = [];
+    pokedexData.forEach(pkm => {
+        if (checkName(pkm.name, searchValue)) {
+            filteredPokemon.push(pkm);
+        }
+    });
+
+    if (filteredPokemon.length === 0){
+        renderThumbnailRef();
+    } else {
+        renderFilteredPokemon();
+    }
+}
+
+function searchPokemon(){
+    const searchValue = document.getElementById('searchInput').value;
+    if (searchValue.length >= 3){
+        searchPokemonData(searchValue);
+    } else {
+        filteredPokemon = [];
+        renderThumbnailRef();
+    }
+}
+
+function renderFilteredPokemon(){
+    contentRef.innerHTML ="";
+    filteredPokemon.forEach((pkm, i) => {
+        contentRef.innerHTML += /*html*/`
+            <div onclick="openOverlay(${i})" class="thumbnail">
+                <div>#${pkm.id}</div>
+                <h3>${pkm.name.charAt(0).toUpperCase()+pkm.name.slice(1)}</h3>
+                <div>
+                    <p>${pkm.types[0].type.name}</p>
+                    <p>${pkm.types[1] ? pkm.types[1].type.name : ""}</p>
+                </div>
+                <div><img src="${pkm.sprites.front_default}" alt="${pkm.name}"></div>
+            </div>
+        `;
+    });
+}
