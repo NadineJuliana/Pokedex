@@ -1,6 +1,7 @@
 const contentRef = document.getElementById('contentRef');
 const searchInputRef = document.getElementById('searchInput');
 const button = document.getElementById('loadingButton');
+const gotchaMessage = document.getElementById('gotchaMessage');
 const pokedexData = [];
 const limit = 30;
 let filteredPokemon = [];
@@ -94,6 +95,7 @@ function renderFilteredPokemon() {
     button.style.display = 'none';
     contentRef.innerHTML = "";
     filteredPokemon.forEach((pkm, i) => {
+        gotchaMessage.innerHTML = getFilteredThumbnailImage();
         contentRef.innerHTML += getFilteredThumbnailTemplates(pkm, i);
     });
     searchInputRef.value = "";
@@ -117,6 +119,7 @@ function hideNavigationHomepage() {
 }
 
 function goBackHomepage() {
+    gotchaMessage.innerHTML = "";
     contentRef.innerHTML = "";
     renderThumbnailRef();
     hideNavigationHomepage();

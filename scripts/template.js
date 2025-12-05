@@ -12,6 +12,12 @@ return `
 `;
 }
 
+function getFilteredThumbnailImage() {
+    return `
+        <img src="assets/icons/gotcha.png" alt="Gotcha Message">
+    `;
+}
+
 function getFilteredThumbnailTemplates(pkm, i) {
 return `
     <div onclick="openOverlay(${i}, true)" class="thumbnail bg_${pkm.types[0].type.name}">
