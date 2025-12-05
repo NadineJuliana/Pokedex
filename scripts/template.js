@@ -2,13 +2,12 @@ function getThumbnailTemplates(pkm, i) {
     return `
         <div onclick="openOverlay(${i}, false)" class="thumbnail bg_${pkm.types[0].type.name}" id="thumbnailRef${i}">
             <div>#${pkm.id}</div>
-            <!-- <div>${pkm.cries.latest}</div> -->
+            <div class="thumbnail_Image_Ref"><img class="thumbnail_Image" src="${pkm["sprites"]["other"]["official-artwork"]["front_default"]}" alt="${pkm.name}"></div>
             <h3>${pkm.name.charAt(0).toUpperCase() + pkm.name.slice(1)}</h3>
-            <div>
-                <p>${pkm.types[0].type.name}</p>
-                <p>${pkm.types[1] ? pkm.types[1].type.name : ""}</p>
-            </div>
-            <div><img src="${pkm.sprites.front_default}" alt="${pkm.name}"></div>
+            <div class="thumbnail_Types_Ref">
+                <p class="thumbnail_Types bg_${pkm.types[0].type.name}">${pkm.types[0].type.name.charAt(0).toUpperCase() + pkm.types[0].type.name.slice(1)}</p>
+                <p class="thumbnail_Types bg_${pkm.types[1] ? pkm.types[1].type.name : ""}">${pkm.types[1] ? pkm.types[1].type.name.charAt(0).toUpperCase() + pkm.types[1].type.name.slice(1)  : ""}</p>
+            </div> 
         </div>
     `;
 }
@@ -17,12 +16,12 @@ function getFilteredThumbnailTemplates(pkm, i){
     return `
         <div onclick="openOverlay(${i}, true)" class="thumbnail bg_${pkm.types[0].type.name}">
             <div>#${pkm.id}</div>
-                <h3>${pkm.name.charAt(0).toUpperCase() + pkm.name.slice(1)}</h3>
-                <div>
-                    <p>${pkm.types[0].type.name}</p>
-                    <p>${pkm.types[1] ? pkm.types[1].type.name : ""}</p>
-                </div>
-            <div><img src="${pkm.sprites.front_default}" alt="${pkm.name}"></div>
+            <div class="thumbnail_Image_Ref"><img class="thumbnail_Image" src="${pkm["sprites"]["other"]["official-artwork"]["front_default"]}" alt="${pkm.name}"></div>
+            <h3>${pkm.name.charAt(0).toUpperCase() + pkm.name.slice(1)}</h3>
+            <div class="thumbnail_Types_Ref">
+                <p class="thumbnail_Types bg_${pkm.types[0].type.name}">${pkm.types[0].type.name.charAt(0).toUpperCase() + pkm.types[0].type.name.slice(1)}</p>
+                <p class="thumbnail_Types bg_${pkm.types[1] ? pkm.types[1].type.name : ""}">${pkm.types[1] ? pkm.types[1].type.name.charAt(0).toUpperCase() + pkm.types[1].type.name.slice(1) : ""}</p>
+            </div>
         </div>
     `;
 }

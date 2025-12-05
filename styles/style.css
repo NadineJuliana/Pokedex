@@ -18,6 +18,16 @@ main {
     min-height: calc(100vh - 240px);
 }
 
+/* h1 {
+    color: white;
+} */
+
+h3 {
+    text-align: center;
+    font-size: 20px;
+    margin: 8px;
+}
+
 .total_Ref {
     display: flex;
     flex-wrap: wrap;
@@ -27,8 +37,30 @@ main {
 
 .thumbnail {
     width: 280px;
-    height: 400px;
+    height: 300px;
     margin: 16px;
-    border-radius: 20px;
+    border-radius: 15px;
     padding: 16px;
+}
+
+.thumbnail_Image_Ref {
+    display: flex;
+    justify-content: center;
+}
+
+.thumbnail_Image {
+    height: 200px;
+    width: 200px;
+}
+
+.thumbnail_Types_Ref {
+    display: flex;
+    justify-content: center;
+    margin: 16px;
+    gap: 8px;
+}
+
+.thumbnail_Types {
+    padding: 8px;
+    border-radius: 5px;
 }
