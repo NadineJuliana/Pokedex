@@ -4,6 +4,7 @@ let filteredPokemon = [];
 let offset = 0;
 let limit = 30;
 
+
 async function renderTotalContent() {
     await getData();
     renderThumbnailRef();
@@ -12,40 +13,40 @@ async function renderTotalContent() {
 async function getData() {
     showLoading();
     try {
-    for (let i = offset + 1; i <= offset + limit; i++) {
-        const response = await fetch(`https://pokeapi.co/api/v2/pokemon/${i}/`);
-        const pokemonData = await response.json();
-        pokedexData.push(pokemonData);
-    }
-    offset += limit;
+        for (let i = offset + 1; i <= offset + limit; i++) {
+            const response = await fetch(`https://pokeapi.co/api/v2/pokemon/${i}/`);
+            const pokemonData = await response.json();
+            pokedexData.push(pokemonData);
+        }
+        offset += limit;
     } catch (error) {
         console.error("Error loading Pokemon!", error);
     } finally {
         hideLoading();
-    } 
+    }
 }
 
-function renderThumbnailRef(){
+function renderThumbnailRef() {
     for (let i = pokedexData.length - limit; i < pokedexData.length; i++) {
         const pkm = pokedexData[i];
         contentRef.innerHTML += /*html*/`
-        <div onclick="openOverlay(${i}, false)" class="thumbnail" id="thumbnailRef${i}">
+        <div onclick="openOverlay(${i}, false)" class="thumbnail bg_${pkm.types[0].type.name}" id="thumbnailRef${i}">
             <div>#${pkm.id}</div>
             <!-- <div>${pkm.cries.latest}</div> -->
-            <h3>${pkm.name.charAt(0).toUpperCase()+pkm.name.slice(1)}</h3>
+            <h3>${pkm.name.charAt(0).toUpperCase() + pkm.name.slice(1)}</h3>
             <div>
                 <p>${pkm.types[0].type.name}</p>
-                <p>${pkm.types[1]? pkm.types[1].type.name: ""}</p>
+                <p>${pkm.types[1] ? pkm.types[1].type.name : ""}</p>
             </div>
             <div><img src="${pkm.sprites.front_default}" alt="${pkm.name}"></div>
         </div>
-    `   
+    `
     }
-    console.log(pokedexData); 
+    console.log(pokedexData);
 }
 
-async function loadMore(){
-    const maxPokemon = 386;
+async function loadMore() {
+    const maxPokemon = 390;
     if (pokedexData.length >= maxPokemon) return;
     const button = document.getElementById('loadingButton');
     button.disabled = true;
@@ -57,27 +58,31 @@ async function loadMore(){
 function openOverlay(i, isFiltered = false) {
     const pkm = isFiltered ? filteredPokemon[i] : pokedexData[i];
     const overlayRef = document.getElementById('overlayRef');
+    overlayRef.style.display = "flex";
+    document.body.classList.add("no_Scroll");
     overlayRef.innerHTML = /*html*/`
-        <div class="overlay_hidden" id="overlay">
+        <div onclick="event.stopPropagation()" class="overlay_Content bg_${pkm.types[0].type.name}" id="overlay">
             <div class="navigation_icons">
-                <button onclick="openOverlay(${i - 1}, ${isFiltered})">Zurück</button>
-                <button>X</button>
-                <button onclick="openOverlay(${i + 1}, ${isFiltered})">Vorwärts</button>
+                <img onclick="openOverlay(${i - 1}, ${isFiltered})" src="assets/icons/001-left-arrow.png" alt="Left Arrow">
+                <img onclick="closeOverlay(${i})" src="assets/icons/001-up-arrow.png" alt="Close">
+                <img onclick="openOverlay(${i + 1}, ${isFiltered})" src="assets/icons/001-right-arrow.png" alt="Right Arrwo">
             </div>
             <div class="top_area_overlay">
-                <h2>${pkm.name.charAt(0).toUpperCase()+pkm.name.slice(1)}</h2>
+                <h2>${pkm.name.charAt(0).toUpperCase() + pkm.name.slice(1)}</h2>
                 <p>#${pkm.id}</p>
                 <img src="${pkm.sprites.front_default}" alt="${pkm.name}">
-                <div>
+                <div class="top_types">
                     <p>${pkm.types[0].type.name}</p>
-                    <p>${pkm.types[1]? pkm.types[1].type.name: ""}</p>
+                    <p>${pkm.types[1] ? pkm.types[1].type.name : ""}</p>
                 </div>
             </div>
             <div class="bot_area_overlay">
                 <div class="navigation_stats">
+                    <img src="assets/icons/nav-left.png" alt="Left Arrow">
                     <h3 id="about${i}">About</h3>
                     <h3 id="base${i}">Base Stats</h3>
                     <h3 id="shiny${i}">Shiny</h3>
+                    <img src="assets/icons/nav-right.png" alt="Right Arrow">
                 </div>
                 <div class="stats_ref">
                     <div id="aboutStats${i}">
@@ -89,7 +94,7 @@ function openOverlay(i, isFiltered = false) {
                         <p>${pkm.weight}</p>
                         <p>Abilities:</p>
                         <p>${pkm.abilities[0].ability.name}</p>
-                        <p>${pkm.abilities[1]? pkm.abilities[1].ability.name: ""}</p>
+                        <p>${pkm.abilities[1] ? pkm.abilities[1].ability.name : ""}</p>
                     </div>
                     <div id="baseStats${i}">
                         <p>HP</p>
@@ -112,34 +117,38 @@ function openOverlay(i, isFiltered = false) {
             </div>
 
         </div>
-    `
+    `;
 }
 
-// function closeOverlay(){}
+function closeOverlay() {
+    const overlay = document.getElementById('overlayRef');
+    overlay.style.display = 'none';
+    document.body.classList.remove("no_Scroll");
+}
 
-function checkName(pokemonName, searchValue){
-    if(pokemonName.includes(searchValue.toLowerCase())){
+function checkName(pokemonName, searchValue) {
+    if (pokemonName.includes(searchValue.toLowerCase())) {
         return true;
     }
 }
 
-function searchPokemonData(searchValue){
+function searchPokemonData(searchValue) {
     filteredPokemon = [];
     pokedexData.forEach(pkm => {
         if (checkName(pkm.name, searchValue)) {
-            filteredPokemon.push(pkm); 
+            filteredPokemon.push(pkm);
         }
     });
-    if (filteredPokemon.length === 0){
+    if (filteredPokemon.length === 0) {
         renderThumbnailRef();
     } else {
         renderFilteredPokemon();
     }
 }
 
-function searchPokemon(){
+function searchPokemon() {
     const searchValue = document.getElementById('searchInput').value;
-    if (searchValue.length >= 3){
+    if (searchValue.length >= 3) {
         searchPokemonData(searchValue);
     } else {
         filteredPokemon = [];
@@ -147,13 +156,13 @@ function searchPokemon(){
     }
 }
 
-function renderFilteredPokemon(){
-    contentRef.innerHTML ="";
+function renderFilteredPokemon() {
+    contentRef.innerHTML = "";
     filteredPokemon.forEach((pkm, i) => {
         contentRef.innerHTML += /*html*/`
-            <div onclick="openOverlay(${i}, true)" class="thumbnail">
+            <div onclick="openOverlay(${i}, true)" class="thumbnail bg_${pkm.types[0].type.name}">
                 <div>#${pkm.id}</div>
-                <h3>${pkm.name.charAt(0).toUpperCase()+pkm.name.slice(1)}</h3>
+                <h3>${pkm.name.charAt(0).toUpperCase() + pkm.name.slice(1)}</h3>
                 <div>
                     <p>${pkm.types[0].type.name}</p>
                     <p>${pkm.types[1] ? pkm.types[1].type.name : ""}</p>
@@ -163,7 +172,6 @@ function renderFilteredPokemon(){
         `;
     });
 }
-
 
 function showLoading() {
     document.getElementById('loadingSpinner').style.display = 'flex';
