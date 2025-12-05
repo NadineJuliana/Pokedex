@@ -1,8 +1,9 @@
 const contentRef = document.getElementById('contentRef');
-let pokedexData = [];
+const searchInputRef = document.getElementById('searchInput');
+const pokedexData = [];
+const limit = 30;
 let filteredPokemon = [];
 let offset = 0;
-let limit = 30;
 
 async function renderTotalContent() {
     await getData();
@@ -57,10 +58,14 @@ function closeOverlay() {
     document.body.classList.remove("no_Scroll");
 }
 
-function checkName(pokemonName, searchValue) {
-    if (pokemonName.includes(searchValue.toLowerCase())) {
-        return true;
+function searchPokemon() {
+    const searchValue = searchInputRef.value;
+    if (searchValue.length < 3) {
+        alert('U nedd min 3 Letters!');
+        return;
     }
+    searchPokemonData(searchValue);
+    searchInputRef.value = "";
 }
 
 function searchPokemonData(searchValue) {
@@ -71,19 +76,15 @@ function searchPokemonData(searchValue) {
         }
     });
     if (filteredPokemon.length === 0) {
-        renderThumbnailRef();
-    } else {
-        renderFilteredPokemon();
+        alert('No Pokémon found!');
+        return;
     }
+    renderFilteredPokemon();
 }
 
-function searchPokemon() {
-    const searchValue = document.getElementById('searchInput').value;
-    if (searchValue.length >= 3) {
-        searchPokemonData(searchValue);
-    } else {
-        filteredPokemon = [];
-        renderThumbnailRef();
+function checkName(pokemonName, searchValue) {
+    if (pokemonName.includes(searchValue.toLowerCase())) {
+        return true;
     }
 }
 
@@ -92,6 +93,7 @@ function renderFilteredPokemon() {
     filteredPokemon.forEach((pkm, i) => {
         contentRef.innerHTML += getFilteredThumbnailTemplates(pkm, i);
     });
+    searchInputRef.value = "";
 }
 
 function showLoading() {
