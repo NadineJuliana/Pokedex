@@ -63,7 +63,7 @@ function closeOverlay() {
 function searchPokemon() {
     const searchValue = searchInputRef.value;
     if (searchValue.length < 3) {
-        alert('U nedd min 3 Letters!');
+        alert('The Pokémon needs at least 3 steps to hatch.');
         return;
     }
     searchPokemonData(searchValue);
@@ -78,7 +78,7 @@ function searchPokemonData(searchValue) {
         }
     });
     if (filteredPokemon.length === 0) {
-        alert('No Pokémon found!');
+        alert('Oh no! The Pokémon has escaped!');
         return;
     }
     renderFilteredPokemon();
