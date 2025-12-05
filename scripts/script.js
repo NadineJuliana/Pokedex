@@ -51,6 +51,7 @@ function openOverlay(i, isFiltered = false) {
     overlayRef.style.display = "flex";
     document.body.classList.add("no_Scroll");
     overlayRef.innerHTML = getOverlayTemplates(pkm, i, isFiltered);
+    selectTabs();
 }
 
 function closeOverlay() {
@@ -107,16 +108,39 @@ function hideLoading() {
     document.getElementById('loadingSpinner').style.display = 'none';
 }
 
-function showNavigationHomepage(){
+function showNavigationHomepage() {
     document.getElementById('navigationHomepage').style.display = 'flex';
 }
 
-function hideNavigationHomepage(){
+function hideNavigationHomepage() {
     document.getElementById('navigationHomepage').style.display = 'none';
 }
 
-function goBackHomepage(){
+function goBackHomepage() {
     contentRef.innerHTML = "";
     renderThumbnailRef();
     hideNavigationHomepage();
+}
+
+function selectTabs() {
+    const tablists = document.querySelectorAll('[role="tablist"]');
+    tablists.forEach(tablist => {
+        const buttons = tablist.querySelectorAll('[role="tab"]');
+        buttons.forEach((btn, index) => initializeTab(btn, index, buttons));
+    });
+}
+
+function initializeTab(tabButton, index, allButtons) {
+    const panel = document.getElementById(tabButton.getAttribute('aria-controls'));
+    tabButton.setAttribute('aria-selected', index === 0 ? 'true' : 'false');
+    panel.toggleAttribute('hidden', index !== 0);
+    tabButton.addEventListener('click', () => switchTab(allButtons, index));
+}
+
+function switchTab(buttons, activeIndex) {
+    buttons.forEach((btn, i) => {
+        const panel = document.getElementById(btn.getAttribute('aria-controls'));
+        btn.setAttribute('aria-selected', i === activeIndex ? 'true' : 'false');
+        panel.toggleAttribute('hidden', i !== activeIndex);
+    });
 }
