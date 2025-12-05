@@ -27,3 +27,15 @@
     flex-direction: column;
     align-items: center;
 }
+
+.loading_Button {
+    background: rgba(255, 255, 255, 0.382);
+    border-radius: 50px;
+    padding: 8px;
+    margin: 16px;
+}
+
+.search img {
+    width: 40px;
+    height: auto;
+}
