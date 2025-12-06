@@ -68,23 +68,23 @@ return `
             <div class="about_Stats" id="firstTabpanel${i}" role="tabpanel" aria-labelledby="firstTabButton${i}">
                 <div class="about">
                     <h4>Species:</h4>
-                    <p>${pkm.species.name}</p>
+                    <p>${pkm.species.name.charAt(0).toUpperCase() + pkm.name.slice(1)}</p>
                 </div>
                 <div class="about">
                     <h4>Height:</h4>
-                    <p>${pkm.height}</p>
+                    <p>${(pkm.height * 0.1).toFixed(2)} m</p>
                 </div>
                 <div class="about">
                     <h4>Weight:</h4>
-                    <p>${pkm.weight}</p>
+                    <p>${(pkm.weight * 0.1).toFixed(2)} kg</p>
                 </div>
                 <div class="about">
                     <h4>Abilities:</h4>
-                    <p>${pkm.abilities[0].ability.name}</p>
+                    <p>${pkm.abilities[0].ability.name.charAt(0).toUpperCase() + pkm.abilities[0].ability.name.slice(1)}</p>
                 </div>
                 <div class="about">
                     <p><p>
-                    <p>${pkm.abilities[1] ? pkm.abilities[1].ability.name : ""}</p>
+                    <p>${pkm.abilities[1] ? pkm.abilities[1].ability.name.charAt(0).toUpperCase() + pkm.abilities[1].ability.name.slice(1) : ""}</p>
                 </div>
                 <div class="about">
                     <h4>Sounds:</h4>
