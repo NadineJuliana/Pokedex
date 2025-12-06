@@ -140,3 +140,7 @@
     width: 100px;
     height: 100px;
 }
+
+.navigation_icons img:hover {
+    cursor: pointer;
+}
