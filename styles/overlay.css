@@ -113,6 +113,17 @@
     margin: 8px;
 }
 
+.sound_Buttons_Ref {
+    display: flex;
+    justify-content: space-evenly;
+    margin-top: 32px;
+}
+
+.sound_Button {
+    background: none;
+    border-color: silver;
+}
+
 .stats {
     margin: 4px;
 }
