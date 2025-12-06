@@ -135,11 +135,11 @@ return `
             </div>
             <div class="appearances" id="thirdTabpanel${i}" role="tabpanel" aria-labelledby="thirdTabButton${i}" hidden>
                 <div class="appearance">
-                    <h4>Normal Appearance</h4>
+                    <h5>Normal Appearance</h5>
                     <img src="${pkm.sprites.front_default}" alt="${pkm.name}">
                 </div>
                 <div class="appearance">
-                    <h4>Shiny Appearance</h4>
+                    <h5>Shiny Appearance</h5>
                    <img src="${pkm.sprites.front_shiny}" alt="${pkm.name}">     
                 </div> 
             </div>

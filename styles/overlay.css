@@ -13,16 +13,17 @@
 
 .overlay_Content {
     background-color: rgba(255, 255, 255, 0.767);
-    padding: 16px;
+    padding: 12px;
     border-radius: 10px;
-    width: 400px;
-    height: 75vh;
+    width: 450px;
+    height: 85vh;
     overflow-y: auto;
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
     position: relative;
     box-sizing: border-box;
-    margin: 16px;
+    margin: 24px;
     border: 15px solid silver;
+    scrollbar-width: none;
 }
 
 .no_Scroll {
@@ -116,7 +117,6 @@
 .sound_Buttons_Ref {
     display: flex;
     justify-content: space-evenly;
-    margin-top: 32px;
 }
 
 .sound_Button {
