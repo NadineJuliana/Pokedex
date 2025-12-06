@@ -86,6 +86,14 @@ return `
                     <p><p>
                     <p>${pkm.abilities[1] ? pkm.abilities[1].ability.name : ""}</p>
                 </div>
+                <div class="about">
+                    <h4>Sounds:</h4>
+                    <p></p>
+                </div>  
+                <div class="sound_Buttons_Ref">
+                    <button class="sound_Button" ${pkm.cries.latest ? "" : "disabled"} onclick="playCry('${pkm.cries.latest}')">Latest Cry</button>
+                    <button class="sound_Button" ${pkm.cries.legacy ? "" : "disabled"} onclick="playCry('${pkm.cries.legacy}')">Legacy Cry</button>
+                </div>
             </div>
             <div class="base_Stats" id="secondTabpanel${i}" role="tabpanel" aria-labelledby="secondTabButton${i}" hidden>
                 <div class="stats">
