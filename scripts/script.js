@@ -61,6 +61,16 @@ function closeOverlay() {
     document.body.classList.remove("no_Scroll");
 }
 
+function playCry(url) {
+    if (!url) {
+        alert("No cry available for this Pokémon.");
+        return;
+    }
+    const audio = new Audio(url);
+    audio.volume = 0.03;
+    audio.play().catch(err => console.error("Error playing sound:", err));
+}
+
 function searchPokemon() {
     const searchValue = searchInputRef.value;
     if (searchValue.length < 3) {
