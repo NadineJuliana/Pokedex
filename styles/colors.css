@@ -1,89 +1,107 @@
 .bg_normal {
     background-color: #A4ACAF;
     background: linear-gradient(132deg, rgba(170, 170, 153, 0.8) 0%, rgba(164, 172, 175, 0.8) 50%, rgba(255, 255, 255, 0.8) 100%);
+    box-shadow: 10px 5px 15px #A4ACAF;
 }
 
 .bg_fire {
     background-color: #FD7D24;
     background: linear-gradient(132deg,rgba(255, 68, 34, 0.8) 0%, rgba(253, 125, 36, 0.8) 50%, rgba(255, 255, 255, 0.8) 100%);
+    box-shadow: 10px 5px 15px #FD7D24;
 }
 
 .bg_water {
     background-color: #4592C3;
     background: linear-gradient(132deg,rgba(51, 153, 255, 0.8) 0%, rgba(73, 82, 195, 0.8) 50%, rgba(255, 255, 255, 0.8) 100%);
+    box-shadow: 10px 5px 15px #4592C3;
 }
 
 .bg_electric {
     background-color: #EED535;
     background: linear-gradient(132deg,rgba(255, 204, 51, 0.8) 0%, rgba(238, 213, 53, 0.8) 50%, rgba(255, 255, 255, 0.8) 100%);
+    box-shadow: 10px 5px 15px #EED535;
 }
 
 .bg_grass {
     background-color: #9BCC50;
     background: linear-gradient(132deg, rgba(119, 204, 85, 0.7) 0%, rgba(155, 204, 80, 0.7) 50%, rgba(255, 255, 255, 0.7) 100%);
+    box-shadow: 10px 5px 15px #9BCC50;
 }
 
 .bg_ice {
     background-color: #51C4E7;
     background: linear-gradient(132deg,rgba(102, 204, 255, 0.8) 0%, rgba(81, 196, 231, 0.8) 50%, rgba(255, 255, 255, 0.8) 100%);
+    box-shadow: 10px 5px 15px #51C4E7;
 }
 
 .bg_fighting {
     background-color: #D56723;
     background: linear-gradient(132deg,rgba(187, 85, 68, 0.8) 0%, rgba(213, 103, 35, 0.8) 50%, rgba(255, 255, 255, 0.8) 100%);
+    box-shadow: 10px 5px 15px #D56723;
 }
 
 .bg_poison {
     background-color: #B97FC9;
     background: linear-gradient(132deg,rgba(170, 85, 153, 0.8) 0%, rgba(185, 127, 201, 0.8) 50%, rgba(255, 255, 255, 0.8) 100%);
+    box-shadow: 10px 5px 15px #B97FC9;
 }
 
 .bg_ground {
     background-color: #AB9842;
     background: linear-gradient(132deg,rgba(247, 222, 63, 0.8) 0%, rgba(171, 152, 66, 0.8) 50%, rgba(255, 255, 255, 0.8) 100%);
+    box-shadow: 10px 5px 15px #AB9842;
 }
 
 .bg_flying {
     background-color: #3DC7EF;
     background: linear-gradient(132deg,rgba(61, 199, 239, 0.8) 0%, rgba(189, 185, 184, 0.8) 50%, rgba(255, 255, 255, 0.8) 100%);
+    box-shadow: 10px 5px 15px #3DC7EF;
 }
 
 .bg_psychic {
     background-color: #F366B9;
     background: linear-gradient(132deg,rgba(255, 85, 153, 0.8) 0%, rgba(243, 102, 185, 0.8) 50%, rgba(255, 255, 255, 0.8) 100%);
+    box-shadow: 10px 5px 15px #F366B9;
 }
 
 .bg_bug {
     background-color: #729F3F;
     background: linear-gradient(132deg,rgba(170, 187, 34, 0.8) 0%, rgba(114, 159, 63, 0.8) 50%, rgba(255, 255, 255, 0.8) 100%);
+    box-shadow: 10px 5px 15px #729F3F;
 }
 
 .bg_rock {
     background-color: #A38C21;
     background: linear-gradient(132deg,rgba(187, 170, 102, 0.8) 0%, rgba(163, 140, 33, 0.8) 50%, rgba(255, 255, 255, 0.8) 100%);
+    box-shadow: 10px 5px 15px #A38C21;
 }
 
 .bg_ghost {
     background-color: #7B62A3;
     background: linear-gradient(132deg,rgba(102, 102, 187, 0.8) 0%, rgba(123, 98, 163, 0.8) 50%, rgba(255, 255, 255, 0.8) 100%);
+    box-shadow: 10px 5px 15px #7B62A3;
 }
 
 .bg_dragon {
     background-color: #F16E57;
     background: linear-gradient(132deg,rgba(83, 164, 207, 0.8) 0%, rgba(241, 110, 87, 0.8) 50%, rgba(255, 255, 255, 0.8) 100%);
+    box-shadow: 10px 5px 15px #F16E57;
 }
 
 .bg_dark {
     background-color: #707070;
     background: linear-gradient(132deg,rgba(119, 85, 68, 0.8) 0%, rgba(112, 112, 112, 0.8) 50%, rgba(255, 255, 255, 0.8) 100%);
+    box-shadow: 10px 5px 15px #707070;
 }
 
 .bg_steel {
     background-color: #9EB7B8;
-    background: linear-gradient(132deg,rgba(170, 170, 187, 0.8) 0%, rgba(158, 183, 184, 0.8) 50%, rgba(255, 255, 255, 0.8) 100%);  
+    background: linear-gradient(132deg,rgba(170, 170, 187, 0.8) 0%, rgba(158, 183, 184, 0.8) 50%, rgba(255, 255, 255, 0.8) 100%);
+    box-shadow: 10px 5px 15px #9EB7B8; 
 }
 
 .bg_fairy {
     background-color: #FDB9E9;
     background: linear-gradient(132deg,rgba(238, 153, 238, 0.8) 0%, rgba(253, 185, 233, 0.8) 50%, rgba(255, 255, 255, 0.8) 100%);
+    box-shadow: 10px 5px 15px #FDB9E9;
 }
