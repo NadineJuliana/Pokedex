@@ -39,3 +39,11 @@
     width: 40px;
     height: auto;
 }
+
+.navigation_homepage img:hover {
+    cursor: pointer;
+}
+
+.search img:hover {
+    cursor: pointer;
+}
