@@ -83,7 +83,6 @@ function searchPokemon() {
         return;
     }
     searchPokemonData(searchValue);
-    searchInputRef.value = "";
 }
 
 function searchPokemonData(searchValue) {
@@ -113,7 +112,6 @@ function renderFilteredPokemon() {
         gotchaMessage.innerHTML = getFilteredThumbnailImage();
         contentRef.innerHTML += getFilteredThumbnailTemplates(pkm, i);
     });
-    searchInputRef.value = "";
     showNavigationHomepage();
 }
 
@@ -136,6 +134,7 @@ function hideNavigationHomepage() {
 function goBackHomepage() {
     gotchaMessage.innerHTML = "";
     contentRef.innerHTML = "";
+    searchInputRef.value = "";
     renderThumbnailRef();
     hideNavigationHomepage();
 }
