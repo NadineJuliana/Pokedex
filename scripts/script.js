@@ -47,7 +47,13 @@ async function loadMore() {
 }
 
 function openOverlay(i, isFiltered = false) {
-    const pkm = isFiltered ? filteredPokemon[i] : pokedexData[i];
+    const selectedList = isFiltered ? filteredPokemon : pokedexData;
+    if (i < 0) {
+        i = selectedList.length - 1;
+    } if (i >= selectedList.length) {
+        i = 0;
+    }
+    const pkm = selectedList[i];
     const overlayRef = document.getElementById('overlayRef');
     overlayRef.style.display = "flex";
     document.body.classList.add("no_Scroll");
