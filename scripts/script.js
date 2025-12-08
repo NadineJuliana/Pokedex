@@ -33,7 +33,6 @@ function renderThumbnailRef() {
         const pkm = pokedexData[i];
         contentRef.innerHTML += getThumbnailTemplates(pkm, i);
     }
-    console.log(pokedexData);
     button.style.display = 'flex';
 }
 
