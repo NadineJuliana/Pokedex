@@ -96,6 +96,7 @@ h4 {
     margin: 16px;
     border-radius: 15px;
     padding: 16px;
+    box-sizing: unset;
 }
 
 .pkm_Number {
