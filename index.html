@@ -18,38 +18,40 @@
 </head>
 
 <body onload="renderTotalContent()">
-    <header>
-        <section class="header_Logo">
-            <img src="assets/img/pokemon-4635112_640.png" alt="Pokeball">
-            <h1>Gotta Catch 'Em All!</h1>
-        </section>
-        <section id="searchRef" class="search">
-            <input type="text" id="searchInput" placeholder="-Find your favorite Pokemon!-" required>
-            <img onclick="searchPokemon()" src="assets/icons/012-game-1.png" alt="Search Button">
-        </section>
-    </header>
-    <main>
-        <div class="gotcha_Message" id="gotchaMessage"></div>
-        <section class="total_Ref" id="contentRef"></section>
-        <button class="loading_Button" id="loadingButton" onclick="loadMore()"><img src="assets/icons/011-egg.png"
-                alt="Load Button"></button>
+    <div class="page-wrapper">
+        <header>
+            <section class="header_Logo">
+                <img src="assets/img/pokemon-4635112_640.png" alt="Pokeball">
+                <h1>Gotta Catch 'Em All!</h1>
+            </section>
+            <section id="searchRef" class="search">
+                <input type="text" id="searchInput" placeholder="-Find your favorite Pokemon!-" required>
+                <img onclick="searchPokemon()" src="assets/icons/012-game-1.png" alt="Search Button">
+            </section>
+        </header>
+        <main>
+            <div class="gotcha_Message" id="gotchaMessage"></div>
+            <section class="total_Ref" id="contentRef"></section>
+            <button class="loading_Button" id="loadingButton" onclick="loadMore()"><img src="assets/icons/011-egg.png"
+                    alt="Load Button"></button>
 
-        <div onclick="closeOverlay()" class="overlay_Ref" id="overlayRef"></div>
+            <div onclick="closeOverlay()" class="overlay_Ref" id="overlayRef"></div>
 
-        <div class="loading_Container" id="loadingSpinner">
-            <img class="loading_Spinner" src="assets/img/fight.png" alt="Loading Spinner">
-        </div>
-
-        <div class="navigation_homepage" id="navigationHomepage">
-            <div>
-                <p>Show whole collection!</p>
+            <div class="loading_Container" id="loadingSpinner">
+                <img class="loading_Spinner" src="assets/img/fight.png" alt="Loading Spinner">
             </div>
-            <img onclick="goBackHomepage()" src="assets/icons/006-game.png" alt="Go Back Homepage">
-        </div>
-    </main>
-    <footer>
-        (C) by Nadine Bauer || Impressum
-    </footer>
+
+            <div class="navigation_homepage" id="navigationHomepage">
+                <div>
+                    <p>Show whole collection!</p>
+                </div>
+                <img onclick="goBackHomepage()" src="assets/icons/006-game.png" alt="Go Back Homepage">
+            </div>
+        </main>
+        <footer>
+            (C) by Nadine Bauer || Impressum
+        </footer>
+    </div>
 </body>
 
 </html>
